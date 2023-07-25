@@ -1,0 +1,85 @@
+.profile { 
+    .image-box{
+        @apply relative rounded-full overflow-hidden border-2 border-fuchsia-400;
+        .upload{
+            @apply absolute top-0 left-0 right-0 bottom-0 bg-gray-600 bg-opacity-40 cursor-pointer rounded-full  justify-center items-center hidden;
+        }
+        &:hover{
+            .upload{
+                @apply flex;
+            }
+        }
+    }
+    .edu-form{
+        position: relative;
+        .overly{
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            background-color: rgba(0, 255, 255, 0.219);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            display: none;
+            z-index: 100;
+            &.show{
+                display: flex;
+            }
+        }
+        .edu-card{
+            @apply col-span-12 md:col-span-6 p-2  border border-gray-200 rounded-lg shadow sm:p-3 md:p-4 dark:bg-gray-800 dark:border-gray-700;
+    
+            .header {
+                @apply flex justify-between items-center;
+            }
+    
+            .edu-row-parent{
+                @apply w-full overflow-auto pb-4;
+    
+                .sub-board{
+                  ul{
+                    @apply grid gap-2 grid-cols-12 p-3 border border-fuchsia-600 rounded-md mb-4 relative pt-8;
+    
+                    li{
+                        label{
+                            @apply dark:text-white;
+                        }
+                        &.is-invalid{
+                            .edu-control{
+                                @apply border border-red-400;
+                            }
+                            .invalid-feedback{
+                                @apply text-sm text-red-600;
+                            }
+                        }
+                        &:nth-child(1){ @apply col-span-6;}
+                        &:nth-child(2){ @apply col-span-6;}
+                        &:nth-child(3){ @apply col-span-6;}
+                        &:nth-child(4){ @apply col-span-6;}
+                        &:nth-child(5){ @apply col-span-4;}
+                        &:nth-child(6){ @apply col-span-4;}
+                        &:nth-child(7){ @apply col-span-4;}
+                        &:nth-child(8){ @apply absolute z-10 right-1 top-1}
+    
+                        button{
+                            @apply flex justify-center items-center  relative py-1 px-5 border border-fuchsia-500 text-rose-800 bg-fuchsia-200;
+                            svg{
+                                @apply h-4 w-4 mt-1;
+                            }
+                        }
+                        
+                    }
+                  }
+                }
+            }
+        }
+        .edu-control{
+            @apply w-full px-2 py-1 text-sm;
+            &.is-invalid{
+                @apply border-2 border-red-600 focus:border-blue-400;
+            }
+        }
+    }
+}

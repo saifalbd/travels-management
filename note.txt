@@ -1,0 +1,19 @@
+php artisan make:component UpdateBtn
+
+php artisan make:observer StudentObserver --model=Student
+
+php artisan make:controller Ins/BatchController -r
+php artisan make:controller Ins/CourseController -r
+php artisan make:controller Ins/StudentController -r
+
+
+php artisan make:controller CategoryController -r
+php artisan make:controller ProductController -r
+php artisan make:controller OrderController -r
+php artisan make:controller Student/AuthController
+
+php artisan make:policy CategoryPolicy --model=Category
+php artisan make:policy ProductPolicy --model=Product
+php artisan make:policy OrderPolicy --model=Order
+
+php artisan make:migration create_shops_table

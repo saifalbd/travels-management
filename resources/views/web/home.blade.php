@@ -1,0 +1,1 @@
+<x-app-web :students="$students" :instructors="$instructors"></x-app-web>

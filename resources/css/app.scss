@@ -1,0 +1,361 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@import './sideBar.scss';
+@import './modules.scss';
+
+.form-control{
+    @apply bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  block w-full  dark:bg-gray-700 
+    dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
+
+    &[type='file']{
+        @apply p-0;
+    }
+}
+
+.form-control.is-invalid{
+    @apply border-2 border-red-600 focus:border-blue-400;
+}
+
+.form-group label {
+    @apply block mb-2 text-sm font-medium text-gray-900 dark:text-white;
+}
+.form-group .invalid-feedback{
+    @apply text-red-800 text-sm px-3;
+}
+
+
+.btn{
+@apply font-medium rounded-lg text-sm px-5 
+py-2.5 text-center;
+}
+
+.btn-primary{
+    @apply text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 
+     dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800;
+}
+
+.show-btn{
+    @apply text-red-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none
+    focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-1 m-[1px] text-center dark:border-red-500 dark:text-red-500
+     dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900; 
+}
+
+.edit-btn{
+    @apply text-red-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none
+    focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-1 m-[1px] text-center dark:border-green-50 dark:text-white
+     dark:hover:text-white dark:hover:bg-blue-600 dark:focus:ring-red-900;
+
+     &:hover{
+        @apply bg-blue-700;
+        svg{
+            @apply text-yellow-100
+        }
+     }
+}
+.remove-btn ,.edit-btn,.show-btn {
+    @apply cursor-pointer;
+    svg{
+        width: 18px;
+        height: 18px;
+    }
+}
+.remove-btn{
+    @apply text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none
+    focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-1 m-[1px] text-center dark:border-red-500 dark:text-red-500
+     dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900;
+     svg{
+        @apply text-orange-500 dark:text-yellow-200;
+     }
+     &:hover{
+        svg{
+            @apply text-yellow-200 dark:text-yellow-200;
+         }
+     }
+}
+
+.add-btn{
+    @apply cursor-pointer text-white bg-purple-800 hover:bg-[#2557D6]/90 focus:ring-4 focus:ring-[#2557D6]/50 focus:outline-none font-medium rounded-lg 
+    text-sm  py-2 text-center inline-flex items-center dark:focus:ring-[#2557D6]/50 mr-2;
+}
+
+.list-btn{
+    @apply cursor-pointer text-white bg-[#2557D6] hover:bg-[#2557D6]/90 focus:ring-4 focus:ring-[#2557D6]/50 focus:outline-none font-medium rounded-lg 
+    text-sm  py-2 text-center inline-flex items-center dark:focus:ring-[#2557D6]/50 mr-2;
+}
+
+.add-btn ,.list-btn{
+    svg{
+        @apply w-5 h-5 mx-3 text-white dark:text-white;
+    }
+}
+
+.table-box{
+    @apply  p-4 bg-yellow-50 dark:bg-slate-800 mt-3;
+}
+.table-box > div {
+    @apply relative overflow-x-auto shadow-md sm:rounded-lg;
+    min-height: 300px;
+}
+.table-box > div>table.y-table{
+    @apply text-sm text-gray-500 dark:text-gray-400;
+
+    thead {
+        @apply text-xs text-gray-700 uppercase dark:text-gray-400;
+    }
+}
+
+.table-box > div table.y-table tr>{
+    th:nth-child(odd),td:nth-child(odd){
+        @apply bg-gray-50 dark:bg-gray-800;
+    }
+    th:nth-child(even),td:nth-child(even){
+        @apply dark:text-yellow-50;
+    }
+    
+}
+
+.attend-table{
+    .table-col{
+        .td-child{
+            position: relative;
+            input[type=checkbox]{
+                @apply w-6 h-6 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500
+                 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600;
+
+                 &:checked{
+                    @apply text-fuchsia-500 bg-purple-600
+                 }
+            }
+            .re-btn{
+                @apply absolute right-0 bottom-0 cursor-pointer bg-pink-100 text-pink-800 text-xs font-medium  px-2 py-0.5 rounded dark:bg-pink-900
+                 dark:text-pink-300;
+                 &.active{
+                    @apply bg-fuchsia-500 text-lime-300
+                 }
+            }
+        }
+    }
+    tbody {
+        .name{
+            @apply font-semibold text-lg
+        }
+        tr:hover{
+            td{
+                @apply bg-green-100;
+                &::nth-child(odd){
+                    @apply bg-green-100;
+                }
+            }
+        }
+    }
+}
+
+.remark-modal{
+    background-color: rgba(14, 12, 12, 0.40);
+    @apply fixed w-screen h-screen flex items-center justify-center z-50;
+
+    .content{
+        @apply bg-fuchsia-200 p-5 rounded-xl relative min-w-[600px];
+        .remark-close-btn{
+            @apply absolute right-1 top-1 rounded-full border border-orange-300 h-10 w-10 text-lg text-orange-500 hover:bg-orange-400 hover:text-green-900;
+        }
+        .remark-header{
+            @apply text-2xl font-semibold border-b border-gray-500;
+        }
+        .remark-body{
+            @apply p-3 grid grid-cols-[auto_100px];
+            .form-control{
+                @apply rounded-r-none;
+            }
+            button{
+                @apply px-5 py-2 border border-green-400 bg-orange-300
+            }
+        }
+    }
+}
+
+
+.form-group .avarar-box{
+    display: none;
+}
+.form-group.with-avatar{
+    display: grid;
+    grid-template-columns: 100px auto;
+}
+
+.form-group.with-avatar .avarar-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form-group.with-avatar .avarar-box img{
+    max-width: 90px;
+    max-height: 90px;
+}
+
+
+
+
+    .in-card{
+        @apply  p-2  border border-gray-200 rounded-lg shadow sm:p-3 md:p-4 dark:bg-gray-800 dark:border-gray-700;
+        
+    }
+    .report-select{
+        .report{
+            @apply space-y-6;
+           display: none;
+            &.show{
+                display: block;;
+            }
+        }
+
+    .row{
+        @apply grid gap-2 grid-cols-12;
+    }
+    form {
+        button {
+            @apply flex justify-center items-center whitespace-nowrap text-gray-900 bg-gradient-to-r from-red-200 via-red-300
+            to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100
+             dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-1.5 text-center ml-3 mr-2;
+        }
+    }
+}
+
+
+.order-create{
+    @apply pb-4 flex flex-col;
+    .type-box{
+        @apply flex justify-end order-1;
+        .type-box-item{
+            @apply flex items-center pl-4 border border-blue-500 rounded dark:border-gray-700 bg-fuchsia-100 mr-2;
+            label{
+                @apply w-full py-4 ml-2 mr-4 text-sm  text-gray-900 dark:text-gray-300 font-semibold;
+            }
+            
+        }
+    }
+    .top-input-box{
+        @apply grid grid-cols-12 gap-2 p-4 order-2;
+        input{
+            @apply bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  block w-full  dark:bg-gray-700 
+            dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
+        }
+
+    }
+   .list-parent-box{
+    @apply border border-blue-600 p-4 ml-3 rounded-md bg-fuchsia-50;
+    .more-box{
+        @apply flex justify-center items-center mt-5;
+        button{
+            @apply border border-blue-700 px-3 py-1 bg-blue-700 text-yellow-50;
+        }
+    }
+   
+    .list-parent{
+      
+         .list-box{
+             @apply grid gap-1 md:grid-cols-[auto_120px_120px_120px_50px] border border-orange-300 p-4 md:border-none md:p-0;
+     
+             .remove-box{
+                 @apply  flex justify-center items-center;
+                 button{
+                     @apply flex flex-row-reverse justify-center items-center border border-blue-600 focus:ring-4 ring-blue-300 mt-5 px-4 md:px-1 py-1 bg-blue-100 text-orange-600;
+                     span{
+                         @apply md:hidden;
+                     }
+                     svg{
+                        @apply h-5 w-5;
+                     }
+
+                     &:disabled{
+                        @apply opacity-10;
+                     }
+                 }
+ 
+             }
+            
+ 
+             &:not(:nth-child(1)){
+                 @apply mt-5;
+                 label{
+                     @apply md:hidden;
+                 }
+                 button{
+                     @apply mt-0;
+                 }
+             }
+         }
+     }
+   }
+
+    .total-box{
+        @apply border border-blue-600 p-4 ml-2 mt-4 md:mt-0 mr-4 rounded-md bg-fuchsia-50;
+        .total-box-item{
+            @apply mb-3;
+            >div{
+                @apply  relative;
+                span{
+                    @apply absolute flex justify-center items-center bg-fuchsia-400;
+                    
+                    top: 2px;
+                    left: 2px;
+                    width: 100px;
+                    height: calc(100% - 4px);
+                    border-top-left-radius: 5px;
+                    border-bottom-left-radius: 5px;
+                    border-top-right-radius: 5px;
+                    border-bottom-right-radius: 5px;
+
+                }
+                input{
+                    padding-left: 105px;
+                    text-align: right;
+                    border-radius: 5px;
+                    // border: none!important;
+                    // outline: none;
+                    width: 100%;
+                    &:focus{
+                        // outline: none;
+                        // border: none;
+                        // box-shadow: none;
+                    }
+                }
+            }
+        }
+    }
+    .order-submit{
+        @apply text-center mt-4 border border-fuchsia-500 py-2 cursor-pointer
+        bg-blue-500 text-lg text-yellow-50 ring-2 ring-fuchsia-300 font-semibold hover:bg-blue-600;
+    }
+}
+
+/* -------------------------------- START ASSIDE -------------------------------- */
+aside .dropdown li>a{
+    @apply flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11  hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700;
+}
+
+/*---------------------------------- END ASSIDE ---------------------------------*/
+
+
+
+
+.customer-card{
+    @apply p-3 border border-red-200 rounded-md;
+
+    ul{
+        @apply border border-fuchsia-300 p-3 rounded-xl mt-3 dark:text-white;
+        li{
+            display: grid;
+            grid-template-columns: 30px 120px auto;
+            border-bottom: 1px solid gray;
+            align-items: center;
+            padding: 5px 0;
+            &:last-child{
+                border: none;
+            }
+        }
+    }
+}

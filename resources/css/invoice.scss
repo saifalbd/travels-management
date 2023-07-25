@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.layout{
+    @apply bg-yellow-50 flex justify-center items-start;
+    min-height: 100vh;
+    min-width: 100vw;
+   
+    .box{
+        min-width: 1000px;
+    }
+
+  
+
+    table{
+        width: 100%;
+        thead{
+            th{
+                @apply bg-fuchsia-400 text-center;
+            }
+        }
+        tbody{
+            tr{
+                td{
+                    @apply p-1 text-center;
+                }
+                td:nth-child(even){
+                    @apply bg-gray-100
+                }
+            }
+        }
+    }
+
+    @media print {
+        .box{
+            width: 100%;
+            padding: 10px;
+        } 
+        table{
+            
+        }
+
+    }
+}
