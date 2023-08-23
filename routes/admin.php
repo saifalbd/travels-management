@@ -1,7 +1,7 @@
 <?php 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\{AuthController, CustomerController, CustomerPaymentController, HomeController,OptionController,
-    UserController,UtilityController,PackageController};
+    UserController,UtilityController,PackageController,Bankcontroller, PostCategoryController, PostController};
 
 
 Route::controller(AuthController::class)->group(function () {
@@ -18,10 +18,13 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+    Route::resource('/banks',Bankcontroller::class)->names('bank');
+
     Route::resource('/users', UserController::class)->names('user');
 
     Route::resource('/customers',CustomerController::class)->names('customer');
     Route::resource('/packages',PackageController::class)->names('package');
+    Route::post('/update-progress',[CustomerController::class,'updateProgress'])->name('updateProgress');
 
     Route::resource('/customer-payments',CustomerPaymentController::class)->names('customer.payment');
 
@@ -52,6 +55,12 @@ Route::middleware('auth')->group(function () {
     });
 
 
+
+    Route::prefix('/blog')->name('blog.')->group(function(){
+        Route::resource('/post-categories', PostCategoryController::class)->names('category');
+        Route::get('toggle-active/{post}',[PostController::class,'toggleActive'])->name('post.toggleActive');
+        Route::resource('/posts', PostController::class)->names('post');
+    });
 
  
 

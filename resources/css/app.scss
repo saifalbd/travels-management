@@ -5,6 +5,7 @@
 
 @import './sideBar.scss';
 @import './modules.scss';
+@import './studentModule/dashboard.scss';
 
 .form-control{
     @apply bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  block w-full  dark:bg-gray-700 
@@ -93,7 +94,7 @@ py-2.5 text-center;
 }
 
 .table-box{
-    @apply  p-4 bg-yellow-50 dark:bg-slate-800 mt-3;
+    @apply  md:p-4 bg-yellow-50 dark:bg-slate-800 mt-3;
 }
 .table-box > div {
     @apply relative overflow-x-auto shadow-md sm:rounded-lg;
@@ -178,22 +179,27 @@ py-2.5 text-center;
 }
 
 
-.form-group .avarar-box{
-    display: none;
+.form-group,.logo-box{
+    .avarar-box{
+        display: none;
+    }
 }
-.form-group.with-avatar{
-    display: grid;
-    grid-template-columns: 100px auto;
-}
+.form-group,.logo-box{
 
-.form-group.with-avatar .avarar-box{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.form-group.with-avatar .avarar-box img{
-    max-width: 90px;
-    max-height: 90px;
+    &.with-avatar{
+        display: grid;
+        grid-template-columns: 100px auto;
+
+        .avarar-box{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img{
+                max-width: 90px;
+                max-height: 90px;
+            }
+        }
+    }
 }
 
 

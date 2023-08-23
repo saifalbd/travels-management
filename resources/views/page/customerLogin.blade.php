@@ -1,10 +1,10 @@
-<x-login-layout type="Student">
+<x-login-layout type="Customer">
     <form class="space-y-4 md:space-y-6" method="POST" action="{{route('customer.login.store')}}">
         @csrf
         <div class="form-group" x-data="{ isError: {{$errors->has('mobile')?'true':'false'}} }">
             <label for="mobile" class="label">Your mobile</label>
             <input @click="isError = false" type="number" name="mobile" class="form-control" :class="{'is-invalid':isError}"
-             placeholder="01********" value="01717464617" required="">
+             placeholder="01********" value="" required="">
             @error('mobile')
             <div class="invalid-feedback"  x-show="isError">{{$message}}</div>
             @enderror

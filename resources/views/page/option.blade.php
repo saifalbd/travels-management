@@ -6,7 +6,7 @@
 
     <div class="form-box p-4 bg-yellow-50 mt-3">
         <div class="grid gap-2 sm:grid-cols-2">
-            <form class="col-span-1" action="{{ route('option.dateFormat') }}" method="POST">
+            <form class="col-span-1" action="{{ route('admin.option.dateFormat') }}" method="POST">
                 @csrf
                 {{-- Start Card --}}
                 <div
@@ -25,7 +25,7 @@
                 </div>
             </form>
 
-            <form class="col-span-1" action="{{ route('option.smsConfig') }}" method="POST">
+            <form class="col-span-1" action="{{ route('admin.option.smsConfig') }}" method="POST">
                 @csrf
                 {{-- Start Card --}}
                 <div

@@ -29,4 +29,36 @@ class Customer extends Authenticatable
         return $this->belongsTo(Attachment::class,'avatar_id');
     }
 
+    public function payments(){
+        return $this->hasMany(CustomerPayment::class,'customer_id');
+    }
+
+    public function getPaidAttribute()
+    {
+        return $this->payments()->approved()->sum('amount');
+    }
+
+    public function getProgressAttribute()
+    {
+        $progress = AgreemantProgress::query()->where('agreemant_id',$this->agreemant->id)->with('attachments')->get();
+        $tags = $this->agreemant->package->type->tags->map(function($tag)use($progress){
+            $has = $progress->where('tag_id',$tag->id)->first();
+            $checked = false;
+            $note = '';
+            $attachments = [];
+            if($has){
+                $checked =(bool) $has->checked;
+                $attachments = $has->attachments->toArray();
+                $note = $has->note;
+            }
+            $tag->checked = $checked;
+            $tag->note = $note;
+            $tag->attachments = $attachments;
+
+            return $tag;
+        });
+
+        return $tags;
+    }
+
 }

@@ -3,6 +3,11 @@
 @tailwind utilities;
 
 
+.container{
+    @apply px-[0.1rem] sm:px-[2rem] md:px-[4rem] lg:px-[6rem] xl:px-[7rem] 2xl:px-[8rem] w-full;
+    font-family: 'Montserrat', Helvetica, sans-serif;
+}
+
 .layout{
     @apply bg-yellow-50 flex justify-center items-start;
     min-height: 100vh;
@@ -18,7 +23,7 @@
         width: 100%;
         thead{
             th{
-                @apply bg-fuchsia-400 text-center;
+              background-color: #fef0ff;
             }
         }
         tbody{
@@ -43,4 +48,10 @@
         }
 
     }
+}
+
+
+.payment-invoice{
+    @apply  w-full px-[0.1rem] sm:px-[2rem] md:px-[4rem] lg:px-[6rem] xl:px-[7rem] 2xl:px-[15rem];
+    font-family: 'Montserrat', Helvetica, sans-serif;
 }

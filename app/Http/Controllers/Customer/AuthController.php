@@ -9,6 +9,7 @@ use App\Models\Customer;
 
 use App\Models\customerEducation;
 use App\Models\customerSocial;
+use App\Rules\BdPhone;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
@@ -26,6 +27,27 @@ class AuthController extends Controller
             return redirect()->route('customer.home');
         }
         return view('page.customerLogin');
+    }
+
+    public function registerPage(){
+        return view('page.customerRegister');
+    }
+   
+
+    public function register(Request $request){
+        $request->validate([
+            'name'=>['required','string','max:200'],
+            'mobile'=>['required','numeric',Rule::unique('customers','phone')],
+            'password'=>['required','min:6','confirmed']
+        ]);
+        $name = $request->name;
+        $phone = $request->mobile;
+        $password  = Hash::make($request->password);
+        $avatar_id = 1;
+        $customer = Customer::create(compact('name','phone','password','avatar_id'));
+
+        Auth::guard('customer')->login($customer);
+        return redirect()->route('customer.home');
     }
 
     public function login(Request $request){
@@ -58,11 +80,11 @@ class AuthController extends Controller
         }
         $customer = $request->user();
 
-        $customer->load(['educations','socials']);
-        $list = $customer->socials;
+        $customer->load(['avatar','agreemant.package','reference','payments.attach']);
+     
        
 
-        return view("customer.authProfile",compact('customer','socials','isPassword'));
+        return view("customer.authProfile",compact('customer','isPassword'));
       
     }
 
@@ -149,7 +171,7 @@ class AuthController extends Controller
         $user->update(compact('password'));
 
         Auth::guard('customer')->logout();
-        return redirect()->route('ins.login.page');
+        return redirect()->route('customer.login.page');
     }
 
 

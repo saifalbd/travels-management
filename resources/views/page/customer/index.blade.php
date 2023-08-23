@@ -1,6 +1,5 @@
-
 <x-app>
-   <x-b-bar o="Vustomer Info" t="Customer Info List" :url="route('admin.customer.create')" :add="true" >Add Customer</x-b-bar>
+   <x-b-bar o="Customer Info" t="Customer Info List" :url="route('admin.customer.create')" :add="true" >Add Customer</x-b-bar>
 
    <div class="table-box mb-4">
       <div class="grid sm:grid-cols-2 md:grid-cols-3 sm:gap-2">
@@ -40,6 +39,8 @@
                 <li><x-icon.done></x-icon.done> <span>After Permit:</span> <span>{{$c->agreemant->after_permit}} /TK</span>   </li>
                 <li><x-icon.done></x-icon.done> <span>After Visa:</span> <span>{{$c->agreemant->after_visa}}  /TK</span>  </li>
                 <li><x-icon.done></x-icon.done> <span>Due:</span> <span>{{$c->agreemant->due}}  /TK</span>   </li>
+
+                <li><x-icon.done></x-icon.done> <span>Total Paid:</span> <span>{{$c->paid}}  /TK</span>   </li>
                
              </ul>
 
@@ -50,6 +51,30 @@
 
 
             
+            <a 
+            href="{{route('admin.customer.payment.create',['customer_id'=>$c->id])}}"
+             class="text-white bg-purple-700 hover:bg-blue-800 focus:ring-4 focus:outline-none
+             focus:ring-blue-300 font-medium rounded-none text-sm px-4 py-1.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700
+              dark:focus:ring-blue-800 flex items-center">
+              <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 11 20">
+               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1.75 15.363a4.954 4.954 0 0 0 2.638 1.574c2.345.572 4.653-.434 5.155-2.247.502-1.813-1.313-3.79-3.657-4.364-2.344-.574-4.16-2.551-3.658-4.364.502-1.813 2.81-2.818 5.155-2.246A4.97 4.97 0 0 1 10 5.264M6 17.097v1.82m0-17.5v2.138"/>
+             </svg>
+              <span class="ml-2">Payment</span>
+            </a>
+
+
+            <a 
+            href="{{route('admin.customer.show',['customer'=>$c->id])}}"
+             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none
+              focus:ring-blue-300 font-medium rounded-none text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700
+               dark:focus:ring-blue-800">
+               <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 14">
+                  <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                    <path d="M10 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+                    <path d="M10 13c4.97 0 9-2.686 9-6s-4.03-6-9-6-9 2.686-9 6 4.03 6 9 6Z"/>
+                  </g>
+                </svg>
+            </a>
 
             <a data-tooltip-target="tooltip-edit"
             href="{{route('admin.customer.edit',['customer'=>$c->id])}}"
@@ -84,11 +109,11 @@
 
 
              <div id="tooltip-edit" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-               Edit Instructor
+               Edit Customer
                <div class="tooltip-arrow" data-popper-arrow></div>
            </div>
            <div id="tooltip-remove" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-            Remove Instructor
+            Remove Customer
             <div class="tooltip-arrow" data-popper-arrow></div>
         </div>
            

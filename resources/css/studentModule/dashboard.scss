@@ -1,13 +1,18 @@
+
+
 .dashboard {
 
     .personal-info{
-        @apply p-4;
+        @apply p-4 bg-white;
         ul{
-            @apply grid grid-cols-[180px_10px_auto] hover:bg-lime-50 font-medium;
+            @apply grid grid-cols-[130px_10px_auto] md:grid-cols-[180px_10px_auto] hover:bg-lime-50 font-medium border border-gray-400;
+            &:not(&:last-child){
+                border-bottom: none;
+            }
             li{
                 line-height: 40px;
                 &:nth-child(1){
-                    @apply font-semibold text-gray-700 pl-2;
+                    @apply font-semibold text-gray-700 pl-2 flex justify-end items-center;
                 }
                 &:nth-child(2){
                     @apply font-semibold text-gray-700;
@@ -19,24 +24,33 @@
             }
         }
     }
-    .course-info{
-        ul{
-            @apply grid grid-cols-[120px_10px_auto] hover:bg-lime-50 font-medium;
-            li{
-                line-height: 30px;
-                padding: 5px 0;
-                &:nth-child(1){
-                    @apply font-semibold text-gray-700 pl-2;
-                }
-                &:nth-child(2){
-                    @apply font-semibold text-gray-700;
-                }
+    .payment-info{
 
-                &:nth-child(3){
-                    @apply font-semibold text-gray-900 pl-3;
+        ul.pay-box-list{
+            margin-top: 50px;
+            >li{
+                @apply border border-blue-600 mb-3 p-2 rounded-lg;
+                ul{
+                    @apply grid grid-cols-[120px_10px_auto] hover:bg-lime-50 font-medium;
+                    li{
+                        line-height: 30px;
+                        padding: 5px 0;
+                        text-align: left;
+                        &:nth-child(1){
+                            @apply font-semibold text-gray-700 pl-2;
+                        }
+                        &:nth-child(2){
+                            @apply font-semibold text-gray-700;
+                        }
+        
+                        &:nth-child(3){
+                            @apply font-semibold text-gray-900 pl-3;
+                        }
+                    }
                 }
             }
         }
+       
     }
 
     .course-status-list{

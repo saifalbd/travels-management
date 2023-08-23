@@ -16,7 +16,7 @@ class CustomerSheeder extends Seeder
     public function run(): void
     {
     
-    $package = Package::create(['name'=>'Package A']);
+    $package = Package::create(['name'=>'Package A','type_id'=>1]);
     $customer = [
         "name" => "saidul company", 
         "phone" => "01312288426", 

@@ -29,6 +29,6 @@ class AppWeb extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.app-web');
+        return view('layout.app-web');
     }
 }

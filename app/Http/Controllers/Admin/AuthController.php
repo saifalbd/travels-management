@@ -40,7 +40,7 @@ class AuthController extends Controller
         $user->update(compact('password'));
 
         \auth()->logout();
-        return redirect()->route('login');
+        return redirect()->route('admin.login');
     }
     public function login(Request $request){
 
@@ -56,7 +56,7 @@ class AuthController extends Controller
 
     if($has && Hash::check($password,$has->password)){
         Auth::login($has,true);
-        return redirect()->route('home');
+        return redirect()->route('admin.home');
     }else{
         throw ValidationException::withMessages([
             'email'=>__('auth.failed'),

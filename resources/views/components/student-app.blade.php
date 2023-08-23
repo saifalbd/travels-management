@@ -37,6 +37,18 @@
                 </a>
             </li>
 
+            <li>
+                <a href="{{route('customer.review')}}"
+                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <svg aria-hidden="true"
+                        class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                        fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
+                        <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
+                    </svg>
+                    <span class="ml-3">Review</span>
+                </a>
+            </li>
           
 
          
@@ -76,8 +88,7 @@
                 </button>
                 <a href="{{ route('customer.home') }}" class="flex items-center">
                     <img src="{{ comInfo('sLogo')->url }}" class="h-8 mr-3" alt="{{ config('app.name') }}" />
-                    <span
-                        class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">{{ config('app.name') }}</span>
+                   
                 </a>
                 <button data-collapse-toggle="navbar-dropdown" type="button"
                     class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -123,7 +134,7 @@
                                 <img type="button"
                                     class="w-6 h-6 rounded-full cursor-pointer ring-2
                       ring-gray-300 dark:ring-gray-500"
-                                    src="https://demo.tailadmin.com/src/images/user/user-01.png" alt="User dropdown">
+                                    src="{{auth('customer')->user()->avatar->url}}" alt="User dropdown">
                                 <span class="ml-2">{{ auth('customer')->user()->name }}</span>
         
                                 <svg class="w-5 h-5 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"

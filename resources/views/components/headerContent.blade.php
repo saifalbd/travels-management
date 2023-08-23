@@ -13,8 +13,7 @@
         </button>
         <a href="{{ route('admin.home') }}" class="flex items-center">
             <img src="{{ comInfo('sLogo')->url }}" class="h-8 mr-3" alt="{{ config('app.name') }}" />
-            <span
-                class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">{{ config('app.name') }}</span>
+            
         </a>
         <button data-collapse-toggle="navbar-dropdown" type="button"
             class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -133,7 +132,7 @@
                         <img type="button"
                             class="w-6 h-6 rounded-full cursor-pointer ring-2
               ring-gray-300 dark:ring-gray-500"
-                            src="https://demo.tailadmin.com/src/images/user/user-01.png" alt="User dropdown">
+                            src="{{auth()->user()->avatar->url}}" alt="User dropdown">
                         <span class="ml-2">{{ auth()->user()->name }}</span>
 
                         <svg class="w-5 h-5 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"

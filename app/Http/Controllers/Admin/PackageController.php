@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Attachment;
 use App\Models\Package;
+use App\Models\PackageType;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -15,7 +17,7 @@ class PackageController extends Controller
     public function index()
     {
         
-        $packages = Package::query()->get();
+        $packages = Package::query()->with('avatar')->get();
 
         return view('page.package.index',compact('packages'));
     }
@@ -25,8 +27,9 @@ class PackageController extends Controller
      */
     public function create()
     {
-        
-        return view('page.package.create');
+        $types = PackageType::query()->get();
+      
+        return view('page.package.create',compact('types'));
     }
 
     /**
@@ -35,11 +38,31 @@ class PackageController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'=>['required','string']
+            'name'=>['required','string'],
+            'type_id'=>['required','numeric'],
+            'amount'=>['required','numeric'],
+            'advance'=>['required','numeric'],
+            'after_permit'=>['required','numeric'],
+            'after_visa'=>['required','numeric'],
+            'due'=>['required','numeric'],
+            'photo'=>['required','image'],
+            'note'=>['required','string']
         ]);
 
         $name = $request->name;
-        Package::create(compact('name'));
+        $type_id = $request->type_id;
+        $amount = $request->amount;
+        $advance = $request->advance;
+        $after_permit = $request->after_permit;
+        $after_visa = $request->after_visa;
+        $due = $request->due;
+        $photo = $request->file('photo');
+        $body = $request->note;
+
+        $avatar = Attachment::add($photo,Package::class);
+            $avatar_id = $avatar->id;
+
+        Package::create(compact('name','type_id','amount','advance','after_permit','after_visa','due','avatar_id','body'));
         return redirect()->route('admin.package.index');
     }
 
@@ -56,8 +79,8 @@ class PackageController extends Controller
      */
     public function edit(Package $package)
     {
-        
-        return view('page.package.edit',compact('package'));
+        $types = PackageType::query()->get();
+        return view('page.package.edit',compact('package','types'));
     }
 
     /**
@@ -66,11 +89,35 @@ class PackageController extends Controller
     public function update(Request $request, Package $package)
     {
         $request->validate([
-            'name'=>['required','string',Rule::unique('packages')->whereNot('id',$package->id)]
+            'name'=>['required','string'],
+            'type_id'=>['required','numeric'],
+            'amount'=>['required','numeric'],
+            'advance'=>['required','numeric'],
+            'after_permit'=>['required','numeric'],
+            'after_visa'=>['required','numeric'],
+            'due'=>['required','numeric'],
+            'photo'=>['nullable','image'],
+            'note'=>['required','string']
         ]);
 
         $name = $request->name;
-        $package->update(compact('name'));
+        $type_id = $request->type_id;
+        $amount = $request->amount;
+        $advance = $request->advance;
+        $after_permit = $request->after_permit;
+        $after_visa = $request->after_visa;
+        $due = $request->due;
+        $photo = $request->file('photo');
+        $body = $request->note;
+
+        $avatar_id = $package->avatar_id;
+        if($request->hasFile('photo')){
+            $avatar = Attachment::add($photo,Package::class);
+            $avatar_id = $avatar->id;
+        }
+      
+
+        $package->update(compact('name','type_id','amount','advance','after_permit','after_visa','due','avatar_id','body'));
         return redirect()->route('admin.package.index');
 
     }
@@ -80,7 +127,7 @@ class PackageController extends Controller
      */
     public function destroy(Package $package)
     {
-        
+        $this->authorize('delete',$package);
         $package->delete();
         return redirect()->route('admin.package.index');
     }

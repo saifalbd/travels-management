@@ -2,13 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Batch;
-use App\Models\Course;
-use App\Models\FeeReceiptVoucher;
-use App\Models\Instructor;
-use App\Models\Student;
-use App\Models\Voucher;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -27,7 +21,9 @@ class DatabaseSeeder extends Seeder
        $this->call([
            UserSeeder::class,
            AttachmentSeeder::class,
-           CustomerSheeder::class
+           BankSheeder::class,
+           PackageSeeder::class,
+           CustomerSheeder::class,
         
        ]);
 

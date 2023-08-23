@@ -17,7 +17,7 @@
 
 
 use App\Http\Controllers\Admin\{UtilityController};
-
+use App\Http\Controllers\Web\HomeController;
 use Illuminate\Support\Facades\Route;
 
 use App\Models\CompanyInfo;
@@ -39,6 +39,14 @@ Route::get('/add', [UtilityController::class, 'addCaches']);
 
 
 
+Route::controller(HomeController::class)->group(function(){
+    Route::get('/','home')->name('home');
+    Route::get('/about','about')->name('about');
+    Route::get('/contact','contact')->name('contact');
+    Route::get('/service','service')->name('service');
+    Route::get('/packages/{package}','packageShow')->name('package.show');
+    
+});
 
 
 

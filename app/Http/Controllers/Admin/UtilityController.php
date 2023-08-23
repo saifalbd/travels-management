@@ -86,7 +86,7 @@ class UtilityController extends Controller
 
         Cache::delete('comInfo');
 
-        return redirect()->route('viewSetting',['success'=>'Success Update Your Informations']);
+        return redirect()->route('admin.viewSetting',['success'=>'Success Update Your Informations']);
 
     }
 

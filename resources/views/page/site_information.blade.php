@@ -2,7 +2,7 @@
 
     <x-b-bar o="Settings" t="System Information" ></x-b-bar>
 
-    <x-form-box  method="post" action="{{route('storeSetting')}}">
+    <x-form-box  method="post" action="{{route('admin.storeSetting')}}">
         <div class="form-group col-span-12 grid grid-cols-12 hover:bg-purple-200">
             <label for="staticEmail" class="col-span-4 flex items-center "> Organization </label>
             <div class="col-span-8 p-1">
@@ -37,18 +37,37 @@
             </div>
         </div>
 
+        
+
         <div class="form-group col-span-12 grid grid-cols-12 hover:bg-purple-200">
             <label for="staticEmail" class="col-span-4 flex items-center">Rectangle Logo</label>
-            <div class="col-span-8 p-1">
-                <input type="file" class="form-control" name="logoRectangle" @error('logoRectangle') is-invalid @enderror>
+            <div class="col-span-8 p-1 logo-box with-avatar" id="avatarFgroup">
+                
+                <div class="avarar-box">
+                    <img src="{{$s->rLogo->url}}" alt="" srcset="">
+                </div>
+                <div>
+                    <input onchange="imageChange(event,'avatarFgroup')" type="file" class="form-control" name="logoRectangle" @error('logoRectangle') is-invalid @enderror>
+                </div>
             </div>
         </div>
+
         <div class="form-group col-span-12 grid grid-cols-12 hover:bg-purple-200">
             <label for="staticEmail" class="col-span-4 flex items-center">Square Logo</label>
-            <div class="col-span-8 p-1">
-                <input type="file" class="form-control" name="logoSquare" @error('logoSquare') is-invalid @enderror>
+            <div class="col-span-8 p-1 logo-box with-avatar" id="avatarRgroup">
+                
+                <div class="avarar-box">
+                    <img src="{{$s->sLogo->url}}" alt="" srcset="">
+                </div>
+<div>                <input  onchange="imageChange(event,'avatarRgroup')" type="file" class="form-control" name="logoSquare" @error('logoSquare') is-invalid @enderror></div>
+                
             </div>
         </div>
+
+
+
+      
+     
 
     </x-form-box>
 

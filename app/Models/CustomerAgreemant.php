@@ -10,7 +10,7 @@ class CustomerAgreemant extends Model
     use HasFactory;
 
     protected $fillable = [ 'customer_id','name', 'father_name', 'mother_name', 'gender', 'date_of_birth', 'phone', 'email', 'nid',
-    'passport', 'package_id', 'date', 'amount', 'advance', 'after_permit', 'after_visa', 'due'];
+    'passport', 'package_id', 'date', 'amount', 'advance', 'after_permit', 'after_visa', 'due','present_address','permanent_address'];
 
 
     public function package(){

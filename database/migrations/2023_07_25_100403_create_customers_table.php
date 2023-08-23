@@ -32,6 +32,8 @@ return new class extends Migration
         });
 
 
+        
+
 
         Schema::create('customer_agreemants', function (Blueprint $table) {
             $table->id();
@@ -52,6 +54,32 @@ return new class extends Migration
             $table->bigInteger('after_permit')->default(0);
             $table->bigInteger('after_visa')->default(0);
             $table->bigInteger('due')->default(0);
+            $table->text('present_address')->nullable();
+            $table->text('permanent_address')->nullable();
+            $table->timestamps();
+        });
+
+
+        Schema::create('agreemant_progress', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('agreemant_id');
+            $table->foreignId('tag_id');
+            $table->text('note')->nullable();
+            $table->timestamps();
+        });
+
+        Schema::create('progress-attach', function (Blueprint $table) {
+            $table->foreignId('progress_id');
+            $table->foreignId('attach_id');
+        });
+
+
+        Schema::create('banks', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('branch');
+            $table->string('number')->nullable();
+            $table->boolean('active')->default(true);
             $table->timestamps();
         });
 
@@ -59,14 +87,21 @@ return new class extends Migration
             $table->id();
             $table->foreignId('customer_id');
             $table->foreignId('agreemant_id');
+            $table->foreignId('by_id')->nullable();
+            $table->bigInteger('amount');
             $table->date('date');
-            $table->string('bank');
-            $table->string('branch');
-            $table->string('check_no');
-            $table->boolean('approved');
+            $table->foreignId('bank_id');
+            $table->string('branch')->nullable();
+            $table->string('check_no')->nullable();
+            $table->boolean('approved')->default(false);
             $table->foreignId('attachment_id')->nullable();
+            $table->string('remark')->default('');
             $table->timestamps();
         });
+
+
+
+
 
     }
 

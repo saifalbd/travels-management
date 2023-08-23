@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{config('app.name')}}</title>
-    @vite(['resources/css/login.css','resources/js/login.js'])
+    @vite(['resources/css/login.css'])
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 bg-cover bg-center" style="background-image:url('{{asset('assets/img/login.jpg')}}')">
 

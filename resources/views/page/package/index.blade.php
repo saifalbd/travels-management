@@ -1,5 +1,5 @@
 <x-app>
-    <x-b-bar o="User Info" t="User List" :url="route('admin.user.create')" :add="false" >User Create</x-b-bar>
+    <x-b-bar o="Package Info" t="Package List" :url="route('admin.package.create')" :add="false" >Package Create</x-b-bar>
     
     <div class="table-box">
     <div>

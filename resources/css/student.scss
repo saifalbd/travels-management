@@ -101,7 +101,7 @@ py-2.5 text-center;
 }
 
 .table-box{
-    @apply  p-4 bg-red-50 dark:bg-slate-800 mt-3;
+    @apply  md:p-4 bg-red-50 dark:bg-slate-800 mt-3;
 }
 .table-box > div {
     @apply relative overflow-x-auto shadow-md sm:rounded-lg;

@@ -60,8 +60,7 @@ class RouteServiceProvider extends ServiceProvider
 
                 // Route::middleware('web')->name('w.')->group(base_path('routes/font.php'));
 
-                // Route::middleware('web')->prefix('/ins')->name('ins.')->group(base_path('routes/ins.php'));
-
+               
                 Route::middleware('web')->prefix('/customer')->name('customer.')->group(base_path('routes/customer.php'));
         });
 

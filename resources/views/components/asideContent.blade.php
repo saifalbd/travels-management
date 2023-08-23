@@ -97,6 +97,54 @@
 {{-- END Dropdown --}}
 
 
+<li>
+    <button type="button"
+        class="drop-btn"
+        aria-controls="blog" data-collapse-toggle="blog">
+        <x-icon.message></x-icon.message>
+        <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>
+            Blogs
+        </span>
+        <svg sidebar-toggle-item class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                clip-rule="evenodd"></path>
+        </svg>
+    </button>
+    <ul id="blog" class="hidden py-2 space-y-1 dropdown">
+        <li><a  href="{{route('admin.blog.category.index')}}">Categories</a></li>
+        <li><a href="{{route('admin.blog.post.index')}}">Posts</a></li>
+    </ul>
+</li>
+
+
+<li>
+    <button type="button"
+        class="drop-btn"
+        aria-controls="bank" data-collapse-toggle="bank">
+       <x-icon.user></x-icon.user>
+        <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>
+        Banks
+        </span>
+        <svg sidebar-toggle-item class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                clip-rule="evenodd"></path>
+        </svg>
+    </button>
+    <ul id="bank" class="hidden py-2 space-y-1 dropdown">
+        <li>
+            <a href="{{route('admin.bank.create')}}">Create Bank</a>
+        </li>
+        <li>
+            <a href="{{route('admin.bank.index')}}">Banks</a>
+        </li> 
+    </ul>
+</li>
+
+
 
            {{-- Start Dropdown --}}
            <li>
